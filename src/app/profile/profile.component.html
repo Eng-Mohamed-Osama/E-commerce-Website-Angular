@@ -1,0 +1,63 @@
+<div class="container mt-5 py-5">
+    <form [formGroup]="user" (ngSubmit) ='signup()'>
+      <div class="form-group">
+        
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input 
+        formControlName="UserEmail"
+        name ="UserEmail"
+        required
+        type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email address">
+      </div>
+      <div *ngIf='userControls.UserEmail.touched && !userControls.UserEmail.valid' class="alert alert-danger">
+        <div class="text-danger" *ngIf ='userControls.UserEmail.errors.required'>
+            the email is required
+        </div>
+        <div class="text-warning" *ngIf ='userControls.UserEmail.errors.pattern'>
+            email format wrong
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">user Name</label>
+        <input 
+        formControlName="UserName"
+        name ="UserName"
+        required
+        type="text" class="form-control" id="exampleFormControlInput1" placeholder="type your username">
+      </div>
+      <div *ngIf='userControls.UserName.touched && !userControls.UserName.valid' class="alert alert-danger">
+        <div class="text-danger" *ngIf ='userControls.UserName.errors.required'>
+            the username is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Password</label>
+        <input 
+        formControlName="userPassword"
+        name ="userPassword"
+        required
+        type="password" class="form-control" id="exampleFormControlInput1" placeholder="type your password">
+      </div>
+      <div *ngIf='userControls.userPassword.touched && !userControls.userPassword.valid' class="alert alert-danger">
+        <div class="text-danger" *ngIf ='userControls.userPassword.errors.required'>
+            password is required
+        </div>
+        <div class="text-warning" *ngIf ='userControls.userPassword.errors.minlength'>
+            password cant be less than 8 characters
+        </div>
+        <div class="text-info" *ngIf ='userControls.userPassword.errors.maxlength'>
+            password cant be more than 16 characters
+        </div>
+      </div>
+      
+</div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="user.invalid">Sign Up </button>
+     
+      
+  </form>
+</div>
+
+
+

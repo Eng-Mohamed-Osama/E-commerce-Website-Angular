@@ -1,0 +1,25 @@
+<h1>{{items}}</h1>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+            <div class="col-md-4 col-12" *ngFor="let item of cartItems ; let i = index" >
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" [src]="item.image" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">{{item.title}}</p>
+                  <p class="card-text">{{item.price}}</p>
+                  <p class="card-text">{{item.category}}</p>
+                  <p class="card-text">Number Of Items for this Purchase Is : {{item.counterItem}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-primary" (click)='removeItemFromCart(item.id)'>-</button>
+                            <button type="button" class="btn btn-sm btn-outline-success" (click)='addItemFromCart(item.id)'>+</button>
+                            <button type="button" class="btn btn-sm btn-outline-danger" (click)='removeItem(item.id, item.counterItem)'>Delete item</button>
+                        </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
